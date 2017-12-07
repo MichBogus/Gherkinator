@@ -1,3 +1,4 @@
 package com.mbogus.gherkinatorbdd.model
 
-data class Step(val name: String)
+data class Step(val definition: String,
+                val qualifier: String)
