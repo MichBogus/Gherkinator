@@ -2,7 +2,7 @@ package com.mbogus.gherkinatorbdd
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
-import junit.framework.Assert.assertEquals
+import com.mbogus.gherkinatorbdd.model.ScenarioTest
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -18,12 +18,8 @@ class TestInstrumentedTest : GherkinatorEngine(InstrumentationRegistry.getTarget
     }
 
     @Test
+    @ScenarioTest("This is first test")
     fun thisIsTestRun() {
-        scenarioDefinition = "This is first test"
-        run()
-
-        val appContext = InstrumentationRegistry.getTargetContext()
-
-        assertEquals("com.mbogus.gherkinatorbdd.test", appContext.packageName)
+        runScenario()
     }
 }

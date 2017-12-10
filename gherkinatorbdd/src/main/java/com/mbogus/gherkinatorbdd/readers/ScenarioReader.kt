@@ -12,6 +12,7 @@ class ScenarioReader(val assetManager: AssetManager,
     private val NEW_LINE_MARK = "GHER!"
     private val FEATURE = "Feature:"
     private val SCENARIO = "Scenario:"
+    private val BACKGROUND = "Background:"
     private val GIVEN = "Given:"
     private val WHEN = "When:"
     private val THEN = "Then:"
@@ -19,6 +20,7 @@ class ScenarioReader(val assetManager: AssetManager,
 
     private val NAME_OF_FEATURE_INDEX = 0
     private val NAME_OF_SCENARIO_INDEX = 0
+    private val NAME_OF_STEP_INDEX = 1
 
     fun readScenarios(): List<Scenario> {
         val reader = BufferedReader(InputStreamReader(assetManager.open(fileName)))
@@ -35,43 +37,70 @@ class ScenarioReader(val assetManager: AssetManager,
         reader.close()
 
         if (wholeFile.isNotEmpty()) {
+            checkIfFileContainsFeatureSegment(wholeFile)
             return gatherScenarios(wholeFile)
         }
 
         return emptyList()
     }
 
+    private fun checkIfFileContainsFeatureSegment(wholeFile: StringBuilder) {
+        if (wholeFile.contains(FEATURE, true).not())
+            throw IllegalStateException("GHERKINATOR: This file does not contain \"Feature:\" segment")
+    }
+
     private fun gatherScenarios(wholeFile: StringBuilder): MutableList<Scenario> {
         val scenarios = wholeFile.split(SCENARIO)
 
-        val featureName = scenarios[NAME_OF_FEATURE_INDEX]
+        val backgroundSteps = gatherBackgroundStepsIfOccur(scenarios)
 
-        val listOfScenarios = mutableListOf<Scenario>()
-        scenarios
-                .filterNot { it.contains(featureName) }
-                .map { it.split("\n") }
-                .forEach {
-                    val listOfSteps = mutableListOf<Step>()
-                    val scenario = Scenario(it[NAME_OF_SCENARIO_INDEX].trim(), emptyList())
-                    for (step: String in it) {
-                        with(gatherStep(step)) {
-                            this?.let {
-                                listOfSteps.add(this)
+        with(mutableListOf<Scenario>()) {
+            scenarios.filterNot { it.contains(scenarios[NAME_OF_FEATURE_INDEX]) }
+                    .map { it.split("\n") }
+                    .forEach {
+                        val listOfSteps = mutableListOf<Step>()
+
+                        if (backgroundSteps.isNotEmpty()) {
+                            listOfSteps += backgroundSteps
+                        }
+
+                        val scenario = Scenario(it[NAME_OF_SCENARIO_INDEX].trim(), emptyList())
+                        for (step: String in it) {
+                            with(gatherStep(step)) {
+                                this?.let {
+                                    listOfSteps.add(this)
+                                }
                             }
                         }
+                        scenario.steps = listOfSteps
+                        this.add(scenario)
                     }
-                    scenario.steps = listOfSteps
-                    listOfScenarios.add(scenario)
+            return this
+        }
+    }
+
+    private fun gatherBackgroundStepsIfOccur(scenarios: List<String>): MutableList<Step> {
+        val listOfBackgroundSteps = mutableListOf<Step>()
+        scenarios.filter { it.contains(BACKGROUND) }
+                .flatMap { it.split(BACKGROUND) }
+                .flatMap { it.split("\n") }
+                .filter { it.startsWith(GIVEN) || it.startsWith(WHEN) || it.startsWith(THEN) || it.startsWith(AND) }
+                .forEach { step ->
+                    with(gatherStep(step)) {
+                        this?.let {
+                            listOfBackgroundSteps.add(this)
+                        }
+                    }
                 }
-        return listOfScenarios
+        return listOfBackgroundSteps
     }
 
     private fun gatherStep(step: String): Step? =
             when {
-                step.contains(GIVEN) -> Step(step.split(GIVEN)[1].trim(), Given::class.toString())
-                step.contains(WHEN) -> Step(step.split(WHEN)[1].trim(), When::class.toString())
-                step.contains(THEN) -> Step(step.split(THEN)[1].trim(), Then::class.toString())
-                step.contains(AND) -> Step(step.split(AND)[1].trim(), And::class.toString())
+                step.contains(GIVEN) -> Step(step.split(GIVEN)[NAME_OF_STEP_INDEX].trim(), Given::class.toString())
+                step.contains(WHEN) -> Step(step.split(WHEN)[NAME_OF_STEP_INDEX].trim(), When::class.toString())
+                step.contains(THEN) -> Step(step.split(THEN)[NAME_OF_STEP_INDEX].trim(), Then::class.toString())
+                step.contains(AND) -> Step(step.split(AND)[NAME_OF_STEP_INDEX].trim(), And::class.toString())
                 else -> null
             }
 }
