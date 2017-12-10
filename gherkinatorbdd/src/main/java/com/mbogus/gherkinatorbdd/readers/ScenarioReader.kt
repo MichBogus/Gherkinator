@@ -9,7 +9,6 @@ import java.lang.StringBuilder
 class ScenarioReader(val assetManager: AssetManager,
                      val fileName: String) {
 
-    private val NEW_LINE_MARK = "GHER!"
     private val FEATURE = "Feature:"
     private val SCENARIO = "Scenario:"
     private val BACKGROUND = "Background:"
