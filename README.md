@@ -16,3 +16,13 @@ approach in doing your tests first. </br>
 They provides us as a programmers with necessary logic about application we are working on. They behave as a documentation. </br>
 
 ## Gherkin language as BDD best option </br>
+
+Gherkin is all about using few keywords and typical langaugage that you use everyday (like english). </br>
+Those keywords are: </br>
+* Feature </br>
+* Scenario </br>
+* Background </br>
+* Given </br>
+* When </br>
+* Then </br>
+* And </br>
