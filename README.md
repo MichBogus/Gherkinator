@@ -32,7 +32,7 @@ Those keywords are: </br>
 Add dependency to your project (into project build.gradle)
 
 ```
-maven { url  "https://bintray.com/codefirst/maven" }
+maven { url  "https://codefirst.bintray.com/maven" }
 ```
 
 And to module (into module build.gradle)
