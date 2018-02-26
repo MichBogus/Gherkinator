@@ -65,3 +65,40 @@ class TestInstrumentedTest : GherkinatorEngine(InstrumentationRegistry.getTarget
     }
 }
 ```
+
+3. Create many test robots 
+
+```Kotlin
+class LoginViewRobot : GherkinatorRobot() {
+
+    @Given("Open Login view")
+    fun openLoginViewStep() {
+        //activityRule from constructor
+    }
+
+    @When("Pressing login button")
+    fun actionPressLoginButton() {
+        //espresso onView
+    }
+
+    @Then("I can see progress view")
+    fun assertVisiiblityOfProgressView(nameOfDrugstore: String) {
+        //espresso onView
+    }
+}
+```
+
+```Kotlin
+class DatabaseRobot: GherkinatorRobot() {
+
+    @Given("Insert default values")
+    fun insertDefaultValues() {
+        //database insert from constructor
+    }
+
+    @And("Insert stuff to database")
+    fun insertStuffToDatabase() {
+        //database insert from constructor
+    }
+}
+```
