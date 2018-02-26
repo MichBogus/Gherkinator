@@ -19,10 +19,28 @@ They provides us as a programmers with necessary logic about application we are 
 
 Gherkin is all about using few keywords and typical langaugage that you use everyday (like english). </br>
 Those keywords are: </br>
-* Feature - this is just keyword to name your testsuit (like Feature: Testing login view)</br>
+* Feature - this is just keyword to name your test suite (like Feature: Testing login view)</br>
 * Scenario - this is keyword used to name your one test scenario (like Scenario: Check if login button show progress after pressing)</br>
 * Background - this is keyword that gives predefinition to every single scenario it can only occur once in single feature file</br>
 * Given - this is predefinition to your test (like Given: I insert stuff to database) </br>
 * When - with this keyword you want to use something that user do to get certain behavior (like When: I click on login button)</br>
 * Then - with this keyword you do any asserts for your test (like Then: I can see progress bar) </br>
 * And - with this keyword you can make many predefinition, actions or asserts without constant typing of given, when or then </br>
+
+## Using library </br>
+
+1. Creating feature file for your test class </br>
+
+```
+Feature: Test login view
+
+  Background:
+    Given: Insert default values
+    And: Insert stuff to database
+
+  Scenario: This is first test to check if progress view is visible after pressing login button
+
+    Given: Open Login view
+    When: Pressing login button
+    Then: I can see progress view
+```
