@@ -29,7 +29,7 @@ Those keywords are: </br>
 
 ## Using library </br>
 
-1. Creating feature file for your test class </br>
+1. Creating feature file for your test class (this file should be located in androidTest/assets/features/<filename.feature></br>
 
 ```Gherkin
 Feature: Test login view
@@ -43,4 +43,25 @@ Feature: Test login view
     Given: Open Login view
     When: Pressing login button
     Then: I can see progress view
+```
+
+2. Create test class in androidTest package
+
+```Kotlin
+@RunWith(AndroidJUnit4::class)
+class TestInstrumentedTest : GherkinatorEngine(InstrumentationRegistry.getTargetContext()) {
+
+    override fun featureFileLocation(): String = "features/test.feature"
+
+    @Before
+    fun setUp() {
+        robots = mutableListOf(TestRobot())
+    }
+
+    @Test
+    @ScenarioTest("This is first test to check if progress view is visible after pressing login button")
+    fun thisIsTestRun() {
+        runScenario()
+    }
+}
 ```
