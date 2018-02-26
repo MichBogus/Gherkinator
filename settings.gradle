@@ -1,1 +1,1 @@
-include ':app', ':gherkinatorbdd'
+include ':gherkinatorbdd'

@@ -30,13 +30,10 @@ allprojects {
     }
 }
 
-group = 'com.mbogus'
-version = '1.0'
-
 publish {
     userOrg = 'codefirst'
     groupId = 'com.codefirst.bdd'
     artifactId = 'gherkinatorbdd'
-    publishVersion = '1.0'
+    publishVersion = '1.1'
     website = 'https://github.com/MichBogus/Gherkinator'
 }
