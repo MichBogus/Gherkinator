@@ -37,7 +37,7 @@ maven { url  "https://bintray.com/codefirst/maven" }
 
 And to module (into module build.gradle)
 ```
-compile "com.mbogus.bdd:gherkinatorbdd:<current-version>"
+compile "com.codefirst.bdd:gherkinatorbdd:<current-version>"
 ```
 current-version = 1.0
 
