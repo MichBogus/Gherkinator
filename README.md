@@ -55,7 +55,7 @@ class TestInstrumentedTest : GherkinatorEngine(InstrumentationRegistry.getTarget
 
     @Before
     fun setUp() {
-        robots = mutableListOf(TestRobot())
+        robots = mutableListOf(DatabaseRobot(), LoginViewRobot())
     }
 
     @Test
