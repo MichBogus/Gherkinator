@@ -29,6 +29,18 @@ Those keywords are: </br>
 
 ## Using library </br>
 
+Add dependency to your project (into project build.gradle)
+
+```
+maven { url  "https://bintray.com/codefirst/maven" }
+```
+
+And to module (into module build.gradle)
+```
+compile "com.mbogus.bdd:gherkinatorbdd:<current-version>"
+```
+current-version = 1.0
+
 1. Creating feature file for your test class (this file should be located in androidTest/assets/features/<filename.feature></br>
 
 ```Gherkin
