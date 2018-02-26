@@ -1,34 +1,11 @@
-Feature: Testing something like something
+Feature: Test login view
 
   Background:
-    Given: insert default values for *client*
-    And: second step background
-    When: DUPA!
+    Given: Insert default values
+    And: Insert stuff to database
 
-  Scenario: This is first test
+  Scenario: This is first test to check if progress view is visible after pressing login button
 
-    Given: ala
-    And: Open *aaa* drugstore list
-    And: cos
-    And: cos
-    And: cos
-    And: cos
-    And: cos
-    When: step two
-    And: cos
-    And: cos
-    And: cos
-    And: cos
-    Then: step three
-    And: verify
-    And: cos
-    And: cos
-    And: cos
-    And: cos
-
-  Scenario: This is first test123
-
-    Given: step one
-    When: step two
-    Then: step three
-    And: verify
+    Given: Open Login view
+    When: Pressing login button
+    Then: I can see progress view

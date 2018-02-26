@@ -35,7 +35,7 @@ version = '1.0'
 
 publish {
     userOrg = 'codefirst'
-    groupId = 'com.mbogus.bdd'
+    groupId = 'com.codefirst.bdd'
     artifactId = 'gherkinatorbdd'
     publishVersion = '1.0'
     website = 'https://github.com/MichBogus/Gherkinator'
