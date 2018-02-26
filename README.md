@@ -31,7 +31,7 @@ Those keywords are: </br>
 
 1. Creating feature file for your test class </br>
 
-```
+```Gherkin
 Feature: Test login view
 
   Background:
