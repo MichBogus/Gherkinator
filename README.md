@@ -39,7 +39,7 @@ And to module (into module build.gradle)
 ```
 compile "com.codefirst.bdd:gherkinatorbdd:<current-version>"
 ```
-current-version = 1.0
+current-version = 1.7
 
 1. Creating feature file for your test class (this file should be located in androidTest/assets/features/<filename.feature></br>
 
@@ -116,3 +116,11 @@ class DatabaseRobot: GherkinatorRobot() {
 ```
 
 And that is it, you can now run your test class as usual.
+
+## For development
+
+Command to bintray upload
+
+```
+./gradlew bintrayUpload -PbintrayUser=<usr name> -PbintrayKey=<api key> -PdryRun=false
+```
