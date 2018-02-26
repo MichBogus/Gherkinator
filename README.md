@@ -102,3 +102,5 @@ class DatabaseRobot: GherkinatorRobot() {
     }
 }
 ```
+
+And that is it, you can now run your test class as usual.
