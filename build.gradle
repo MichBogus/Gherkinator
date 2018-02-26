@@ -21,19 +21,10 @@ buildscript {
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'java'
-apply plugin: 'com.novoda.bintray-release'
 
 allprojects {
     repositories {
         google()
         jcenter()
     }
-}
-
-publish {
-    userOrg = 'codefirst'
-    groupId = 'com.codefirst.bdd'
-    artifactId = 'gherkinatorbdd'
-    publishVersion = '1.1'
-    website = 'https://github.com/MichBogus/Gherkinator'
 }
