@@ -12,7 +12,7 @@ abstract class GherkinatorEngine(context: Context) {
     private val FEATURES_LOCATION = "features/"
 
     private var listOfScenarios: List<Scenario>
-    lateinit var robots: MutableList<GherkinatorRobot>
+    abstract var robots: MutableList<GherkinatorRobot>?
 
     private lateinit var stepsRunner: StepRunner
 
@@ -32,7 +32,11 @@ abstract class GherkinatorEngine(context: Context) {
     }
 
     fun runScenario() {
-        stepsRunner = StepRunner(robots)
+        if (robots == null || robots?.isEmpty()!!) {
+            throw IllegalStateException("GHERKINATOR: You didn't provide any robots")
+        }
+
+        stepsRunner = StepRunner(robots!!)
 
         val scenarioDefinition = StackTraceRunner.getScenarioDefinitionByReflection()
         val scenarioToRun = listOfScenarios.filter { it.name == scenarioDefinition }
