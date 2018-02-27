@@ -1,7 +1,7 @@
-package com.mbogus.gherkinatorbdd.readers
+package com.codefirst.bdd.gherkinatorbdd.readers
 
 import android.content.res.AssetManager
-import com.mbogus.gherkinatorbdd.model.*
+import com.codefirst.bdd.gherkinatorbdd.model.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.lang.StringBuilder

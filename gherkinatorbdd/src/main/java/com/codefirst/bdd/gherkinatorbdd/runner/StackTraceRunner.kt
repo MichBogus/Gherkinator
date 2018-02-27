@@ -1,6 +1,6 @@
-package com.mbogus.gherkinatorbdd.runner
+package com.codefirst.bdd.gherkinatorbdd.runner
 
-import com.mbogus.gherkinatorbdd.model.ScenarioTest
+import com.codefirst.bdd.gherkinatorbdd.model.ScenarioTest
 import java.lang.IllegalStateException
 
 object StackTraceRunner {

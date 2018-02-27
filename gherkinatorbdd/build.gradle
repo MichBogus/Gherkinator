@@ -39,26 +39,6 @@ repositories {
     mavenCentral()
 }
 
-task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
-    classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
-
-task copyDoc(type: Copy) {
-    from "${buildDir}/docs/"
-    into "docs"
-}
-
 tasks.withType(Javadoc).all {
     enabled = false
 }
@@ -67,7 +47,6 @@ publish {
     userOrg = 'codefirst'
     groupId = 'com.codefirst.bdd'
     artifactId = 'gherkinatorbdd'
-    publishVersion = '1.7'
+    publishVersion = '1.8'
     website = 'https://github.com/MichBogus/Gherkinator'
 }
-

@@ -1,7 +1,7 @@
-package com.mbogus.gherkinatorbdd.runner
+package com.codefirst.bdd.gherkinatorbdd.runner
 
-import com.mbogus.gherkinatorbdd.GherkinatorRobot
-import com.mbogus.gherkinatorbdd.model.*
+import com.codefirst.bdd.gherkinatorbdd.GherkinatorRobot
+import com.codefirst.bdd.gherkinatorbdd.model.*
 import java.lang.IllegalStateException
 
 class StepRunner(val robots: List<GherkinatorRobot>) {

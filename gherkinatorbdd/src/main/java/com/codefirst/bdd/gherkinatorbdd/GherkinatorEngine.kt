@@ -1,10 +1,10 @@
-package com.mbogus.gherkinatorbdd
+package com.codefirst.bdd.gherkinatorbdd
 
 import android.content.Context
-import com.mbogus.gherkinatorbdd.model.Scenario
-import com.mbogus.gherkinatorbdd.readers.ScenarioReader
-import com.mbogus.gherkinatorbdd.runner.StackTraceRunner
-import com.mbogus.gherkinatorbdd.runner.StepRunner
+import com.codefirst.bdd.gherkinatorbdd.model.Scenario
+import com.codefirst.bdd.gherkinatorbdd.readers.ScenarioReader
+import com.codefirst.bdd.gherkinatorbdd.runner.StackTraceRunner
+import com.codefirst.bdd.gherkinatorbdd.runner.StepRunner
 import java.lang.IllegalStateException
 
 abstract class GherkinatorEngine(context: Context) {

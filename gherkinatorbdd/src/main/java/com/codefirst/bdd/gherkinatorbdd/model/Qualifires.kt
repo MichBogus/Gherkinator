@@ -1,4 +1,4 @@
-package com.mbogus.gherkinatorbdd.model
+package com.codefirst.bdd.gherkinatorbdd.model
 
 annotation class ScenarioTest(val nameOfScenario: String)
 
