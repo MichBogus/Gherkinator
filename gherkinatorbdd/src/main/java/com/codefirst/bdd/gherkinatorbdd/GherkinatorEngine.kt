@@ -9,6 +9,8 @@ import java.lang.IllegalStateException
 
 abstract class GherkinatorEngine(context: Context) {
 
+    private val FEATURES_LOCATION = "features/"
+
     private var listOfScenarios: List<Scenario>
     lateinit var robots: MutableList<GherkinatorRobot>
 
@@ -20,14 +22,19 @@ abstract class GherkinatorEngine(context: Context) {
         if (featureFileLocation().isEmpty()) {
             throw IllegalStateException("GHERKINATOR: You didn't provide any feature file to your test class")
         }
-        listOfScenarios = ScenarioReader(context.assets, featureFileLocation()).readScenarios()
+
+        var fileLocation = featureFileLocation()
+        if (fileLocation.contains(FEATURES_LOCATION).not()) {
+            fileLocation = FEATURES_LOCATION + fileLocation
+        }
+
+        listOfScenarios = ScenarioReader(context.assets, fileLocation).readScenarios()
     }
 
     fun runScenario() {
-        val scenarioDefinition = StackTraceRunner.getScenarioDefinitionByReflection()
-
         stepsRunner = StepRunner(robots)
 
+        val scenarioDefinition = StackTraceRunner.getScenarioDefinitionByReflection()
         val scenarioToRun = listOfScenarios.filter { it.name == scenarioDefinition }
 
         if (scenarioToRun.isEmpty()) {

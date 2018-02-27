@@ -45,7 +45,7 @@ tasks.withType(Javadoc).all {
 
 publish {
     userOrg = 'codefirst'
-    groupId = 'com.codefirst.bdd'
+    groupId = 'com.codefirst'
     artifactId = 'gherkinatorbdd'
     publishVersion = '1.8'
     website = 'https://github.com/MichBogus/Gherkinator'
