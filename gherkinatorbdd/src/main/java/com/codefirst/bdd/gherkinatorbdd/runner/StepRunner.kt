@@ -34,8 +34,8 @@ class StepRunner(val robots: List<GherkinatorRobot>) {
                             return
                         }
                     }
-            throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
         }
+        throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
     }
 
     private fun runStepForThenAnnotation(definition: String) {
@@ -49,8 +49,8 @@ class StepRunner(val robots: List<GherkinatorRobot>) {
                             return
                         }
                     }
-            throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
         }
+        throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
     }
 
     private fun runStepForWhenAnnotation(definition: String) {
@@ -64,8 +64,8 @@ class StepRunner(val robots: List<GherkinatorRobot>) {
                             return
                         }
                     }
-            throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
         }
+        throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
     }
 
     private fun runStepForGivenAnnotation(definition: String) {
@@ -79,7 +79,7 @@ class StepRunner(val robots: List<GherkinatorRobot>) {
                             return
                         }
                     }
-            throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
         }
+        throw IllegalStateException("GHERKINATOR: There is no \"$definition\" step definition in your robots")
     }
 }

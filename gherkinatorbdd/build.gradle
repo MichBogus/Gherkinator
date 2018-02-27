@@ -48,6 +48,6 @@ publish {
     userOrg = 'codefirst'
     groupId = 'com.codefirst'
     artifactId = 'gherkinatorbdd'
-    publishVersion = '1.12'
+    publishVersion = '1.13'
     website = 'https://github.com/MichBogus/Gherkinator'
 }
