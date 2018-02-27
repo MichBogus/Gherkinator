@@ -40,6 +40,7 @@ And to module (into module build.gradle)
 compile "com.codefirst.bdd:gherkinatorbdd:<current-version>"
 ```
 current-version = 1.7
+Status of lib can be monitored here: https://bintray.com/codefirst/maven/gherkinatorbdd
 
 1. Creating feature file for your test class (this file should be located in androidTest/assets/features/<filename.feature></br>
 
