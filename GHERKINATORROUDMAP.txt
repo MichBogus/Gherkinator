@@ -1,0 +1,137 @@
+//
+Feature:
+
+Background:
+Given:
+And:
+
+Scenario:
+Given:
+When:
+Then:
+And:
+
+Scenario${retry#R[2]}:
+Given:
+When:
+Then:
+And:
+
+Scenario:
+Given${retry#R[3]}:
+
+Scenario:
+Given${name#P[typeOfParam]}:
+
+Scenario:
+Given${retry#R[3]}${name#P[typeOfParam]}:
+//
+
+//TYPE OF FILES:
+
+.feature <- this is standard feature file with scenarios
+
+//TYPE OF FILES (END)
+
+//IN QUALIFIRES:
+
+${retry#R[2]} <- this will retry selected scenario/step number of times difined in [] after #R	
+									(	IMPORTANT: This can be used in Scenario and steps only!!! before : symbol	)
+
+EX: Scenario${retry#R[2]}: This test will seek for login name
+EX2: Given${retry#R[3]}: I can see drugstore on the view
+
+${name#P[typeOfParam]} <- this will pass to step method some param
+
+EX: Gien${myDrugstore#P[Drugstore]}: I can see drugstore on the view
+									(	IMPORTANT: This param can be null!!!! set it before runScenario() function!	)
+
+	@GherkinatorParam("myDrugstore")
+	val myDrustore: Drugstore = Drugstore()
+
+	@Given("I can see drugstore on the view")
+	fun canSeeDrugstoreOnTheViewStep(myDrugstore: Drugstore?) { //do something with that drugstore }
+
+${name#PR[typeOfParam]} <- this will pass to step method some param but it will search for params in robot classes
+
+//IN QUALIFIRES (END)
+
+
+//IN NAMES OF STEPS:
+${value} <- this need to be passed as parameter to method (IMPORTANT: THIS WILL ONLY PASS STRING!)
+
+EX: Given: I can see ${Pawel's Drugstore} on the view
+
+	@Given("I can see ${} on the view")
+	fun canSeeTextOnView(value: String) { //do something }
+
+${value#T[type]} <- this need to be passed as parameter to method (	IMPORTANT: THIS WILL ONLY PASS PRIMITIVES! NOT STRING!
+									IMPORTANT2: THIS NEED TO THROW EXCEPTION IF TYPE IS WRONGLY NAMED!	)
+-double
+-float
+-int
+-long
+-short
+-char
+-byte
+-boolean
+
+EX: Given: I can see ${2.5252#T[double]} of cash in the value field
+
+	@Given("I can see ${} of cash in the value field")
+	fun canSeeValueOnFieldStep(value: double) { //do something }
+
+EX2: Then: I see ${true#T[boolean]} visibility of login panel
+
+	@Then("I see ${} visibility of login panel")
+	fun visibilityOfLoginPanel(visible: boolean) { //do something }
+
+${name#F[typeOfField]} <- this will add parameter / object to method with @GherkinatorField(name) annotation
+								(	IMPORTANT: This field can be null!!!! set it before runScenario() function!	)
+
+EX: Given: I can see ${drugstore#F[Drugstore]} on the view
+
+	@GherkinatorField("drugstore")
+	val justDrustore: Drugstore = Drugstore()
+
+	@Given("I can see ${} on the view")
+	fun canSeeDrugstoreObjectOnTheViewStep(drugstore: Drugstore?) { //do something with that drugstore }
+
+EX2 with param and field: Given${firstDrugstore#P[Drugstore]}: I can see ${secondDrugstore#F[Drugstore]} on the view
+
+	@GherkinatorParam("firstDrugstore")
+	val firstDrustore: Drugstore = Drugstore()
+
+	@GherkinatorField("secondDrugstore")
+	val secondDrustore: Drugstore = Drugstore()
+
+	@Given("I can see ${} on the view")
+	fun canSeeDrugstoreObjectOnTheViewStep(firstDrugstore: Drugstore?, secondDrugstore: Drugstore?) { //do something with that drugstores }
+
+${name#FR[typeOfField]} <- this will add parameter / object to method with @GherkinatorField(name) annotation but it will search for fields in robot classes
+								(	IMPORTANT: This field can be null!!!! set it before runScenario() function!	)
+
+//IN NAMES OF STEPS (END)
+
+
+//ANNOTATIONS:
+
+@Scenario(name of scenario)
+
+@Given(name of step)
+@When(name of step)
+@Then(name of step)
+@And(name of step)
+
+@GherkinatorParam(name of param)
+@GherkinatorField(name of field)
+
+//ANNOTATIONS (END)
+
+//CLASSES:
+
+GherkinatorEngine() <- this need to be added to class test
+GherkinatorRobot() <- this need to be added to robot class with steps
+
+//CLASSES (END)
+
