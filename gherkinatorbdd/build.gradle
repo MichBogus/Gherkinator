@@ -27,12 +27,20 @@ android {
         }
     }
 
-    sourceSets { main { assets.srcDirs = ['src/main/assets', 'src/androidTest/assets/'] } }
+    sourceSets {
+        main {
+            assets.srcDirs = ['src/main/assets', 'src/androidTest/assets/']
+            java.srcDirs = ['src/main/java', 'src/androidTest/java/']
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':gherkinatorannotation')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.squareup:javapoet:1.11.1'
+    implementation 'com.squareup:kotlinpoet:1.0.0-RC3'
 }
 
 repositories {

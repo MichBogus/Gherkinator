@@ -1,1 +1,1 @@
-include ':gherkinatorbdd'
+include ':gherkinatorbdd', ':gherkinatorannotation'
