@@ -3,7 +3,6 @@ package com.codefirst.bdd.gherkinatorbdd.v2.scenarioprovider
 import android.content.Context
 import java.io.BufferedReader
 import java.io.InputStreamReader
-import java.lang.StringBuilder
 
 class FileReader {
 
@@ -20,5 +19,7 @@ class FileReader {
             fileLine = reader.readLine()
         }
         reader.close()
+
+        return wholeFile
     }
 }
